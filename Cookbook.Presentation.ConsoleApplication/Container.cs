@@ -1,6 +1,7 @@
 ﻿using Cookbook.Business;
 using Cookbook.Data.Mocks;
 using Cookbook.Data.SqlServer.Odbc;
+using Cookbook.Data.Xml.XmlDocument;
 using Ninject;
 using Ninject.Modules;
 using System;
@@ -25,7 +26,8 @@ namespace Cookbook.Presentation.ConsoleApplication
             var dataSources = new IDataSource[]
             {
                 new DataSource<MockDataNinjectModule>("Mocks"),
-                new DataSource<OdbcDataNinjectModule>("SQL Server (ODBC)")
+                new DataSource<OdbcDataNinjectModule>("SQL Server (ODBC)"),
+                new DataSource<XmlDocumentNinjectModule>("XML (XmlDocument)")
             };
 
             while (true)
