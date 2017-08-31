@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A0DC8874-4CE8-4FA6-93AB-835337B3E2D4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Cookbook.Presentation.ConsoleApplication</RootNamespace>
+    <AssemblyName>Cookbook.Presentation.ConsoleApplication</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ConsoleApplicationNinjectModule.cs" />
+    <Compile Include="Container.cs" />
+    <Compile Include="DataSource.cs" />
+    <Compile Include="Drawers\ComponentModelDrawer.cs" />
+    <Compile Include="Drawers\ErrorDrawer.cs" />
+    <Compile Include="Drawers\IErrorDrawer.cs" />
+    <Compile Include="Drawers\IInputDrawer.cs" />
+    <Compile Include="Drawers\InputDrawer.cs" />
+    <Compile Include="Drawers\IOptionDrawer.cs" />
+    <Compile Include="Drawers\OptionDrawer.cs" />
+    <Compile Include="Exceptions\PresentationException.cs" />
+    <Compile Include="IDataSource.cs" />
+    <Compile Include="Input\IInputProvider.cs" />
+    <Compile Include="Input\InputProvider.cs" />
+    <Compile Include="Menus\IMenu.cs" />
+    <Compile Include="Menus\Menu.cs" />
+    <Compile Include="Menus\Options\IOption.cs" />
+    <Compile Include="IApplication.cs" />
+    <Compile Include="Drawers\IModelDrawer.cs" />
+    <Compile Include="Menus\Options\Option.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Drawers\RecipeModelDrawer.cs" />
+    <Compile Include="Menus\Options\ShowAllRecipesOption.cs" />
+    <Compile Include="Menus\Options\ShowRecipeByName.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cookbook.Business.Models\Cookbook.Business.Models.csproj">
+      <Project>{f16ffac3-048e-404c-b25b-cd6e5aef7308}</Project>
+      <Name>Cookbook.Business.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cookbook.Business\Cookbook.Business.csproj">
+      <Project>{e049f4c1-8b17-4033-a999-dc7487bce975}</Project>
+      <Name>Cookbook.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cookbook.Data.Mocks\Cookbook.Data.Mocks.csproj">
+      <Project>{0587C125-783D-4057-BD5B-126C1CD34F21}</Project>
+      <Name>Cookbook.Data.Mocks</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cookbook.Data.SqlServer.Odbc\Cookbook.Data.SqlServer.Odbc.csproj">
+      <Project>{c37e9c0b-0df0-4db6-830c-30d08e02a036}</Project>
+      <Name>Cookbook.Data.Odbc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Cookbook\Cookbook.csproj">
+      <Project>{bd8dcf8b-dbb2-482c-ba47-56a3971a7cd1}</Project>
+      <Name>Cookbook</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,85 @@
+﻿using Cookbook.Business.Models;
+using System.Collections.Generic;
+using System.Data.Odbc;
+using RecipeDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Recipe;
+
+namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
+{
+    internal sealed class RecipeDataProvider : IRecipeDataProvider
+    {
+        private readonly IComponentDataProvider componentDataProvider;
+
+        public RecipeDataProvider(IComponentDataProvider componentDataProvider)
+        {
+            this.componentDataProvider = componentDataProvider;
+        }
+
+        public IEnumerable<Recipe> FindAllRecipes(OdbcConnection connection)
+        {
+            var recipeDtos = new List<RecipeDto>();
+
+            var commandText = "SELECT [Id] FROM [Recipes] ORDER BY [Name];";
+            var command = new OdbcCommand(commandText, connection);
+
+            using (OdbcDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    var recipeDto = new RecipeDto
+                    {
+                        Id = reader.GetInt32(0)
+                    };
+
+                    recipeDtos.Add(recipeDto);
+                }
+            }
+
+            var recipes = new List<Recipe>();
+
+            foreach (RecipeDto recipeDto in recipeDtos)
+            {
+                Recipe recipe = FindRecipeById(recipeDto.Id, connection);
+                recipes.Add(recipe);
+            }
+
+            return recipes;
+        }
+
+        public Recipe FindRecipeById(int recipeId, OdbcConnection connection)
+        {
+            RecipeDto recipeDto;
+
+            var commandText = $"SELECT [Name] FROM [Recipes] WHERE [Id] = {recipeId};";
+            var command = new OdbcCommand(commandText, connection);
+
+            using (OdbcDataReader reader = command.ExecuteReader())
+            {
+                reader.Read();
+
+                recipeDto = new RecipeDto
+                {
+                    Id = recipeId,
+                    Name = reader.GetString(0)
+                };
+            }
+
+            IEnumerable<Component> components = componentDataProvider.FindComponentsByRecipeId(recipeDto.Id, connection);
+
+            return new Recipe(
+                id: recipeDto.Id,
+                name: recipeDto.Name,
+                components: components
+            );
+        }
+
+        public Recipe FindRecipeByName(string recipeName, OdbcConnection connection)
+        {
+            var commandText = $"SELECT [Id] FROM [Recipes] WHERE [Name] = '{recipeName}';";
+            var command = new OdbcCommand(commandText, connection);
+
+            var recipeId = (int)command.ExecuteScalar();
+
+            return FindRecipeById(recipeId, connection);
+        }
+    }
+}

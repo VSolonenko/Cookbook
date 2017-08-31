@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Cookbook>
+    <Ingredients>
+        <Ingredient Id="1" Name="Mint Leaf"/>
+        <Ingredient Id="2" Name="Simple Syrup"/>
+        <Ingredient Id="3" Name="Fresh Lime Juice"/>
+        <Ingredient Id="4" Name="White Rum"/>
+        <Ingredient Id="5" Name="Club Soda"/>
+        <Ingredient Id="6" Name="Rye Whiskey"/>
+        <Ingredient Id="7" Name="Sweet Vermouth"/>
+        <Ingredient Id="8" Name="Angostura Bitters"/>
+        <Ingredient Id="9" Name="Dale DeGroff's Pimento Aromatic Bitters"/>
+        <Ingredient Id="10" Name="Bénédictine"/>
+        <Ingredient Id="11" Name="Cognac"/>
+        <Ingredient Id="12" Name="George Dickel Rye Whiskey"/>
+        <Ingredient Id="13" Name="Scotch Whiskey"/>
+    </Ingredients>
+    <Recipes>
+        <Recipe Id="1" Name="Mojito">
+            <Components>
+                <Component Id="1" Quantity="6.0" IngredientId="1" UnitId="1"/>
+                <Component Id="2" Quantity="0.75" IngredientId="2" UnitId="2"/>
+                <Component Id="3" Quantity="0.75" IngredientId="3" UnitId="2"/>
+                <Component Id="4" Quantity="1.5" IngredientId="4" UnitId="2"/>
+                <Component Id="5" Quantity="1.5" IngredientId="5" UnitId="2"/>
+            </Components>
+        </Recipe>
+        <Recipe Id="2" Name="Manhattan">
+            <Components>
+                <Component Id="6" Quantity="2.0" IngredientId="6" UnitId="2"/>
+                <Component Id="7" Quantity="1.0" IngredientId="7" UnitId="2"/>
+                <Component Id="8" Quantity="5.0" IngredientId="8" UnitId="3"/>
+            </Components>
+        </Recipe>
+        <Recipe Id="3" Name="Vieux Carré">
+            <Components>
+                <Component Id="9" Quantity="4.0" IngredientId="9" UnitId="4"/>
+                <Component Id="10" Quantity="2.0" IngredientId="10" UnitId="5"/>
+                <Component Id="11" Quantity="0.75" IngredientId="7" UnitId="2"/>
+                <Component Id="12" Quantity="0.75" IngredientId="11" UnitId="2"/>
+                <Component Id="13" Quantity="0.75" IngredientId="12" UnitId="2"/>
+            </Components>
+        </Recipe>
+        <Recipe Id="4" Name="Rob Roy">
+            <Components>
+                <Component Id="14" Quantity="2.0" IngredientId="13" UnitId="2"/>
+                <Component Id="15" Quantity="0.75" IngredientId="7" UnitId="2"/>
+                <Component Id="16" Quantity="3.0" IngredientId="8" UnitId="4"/>
+            </Components>
+        </Recipe>
+    </Recipes>
+    <Units>
+        <Unit Id="1" PluralName="pcs." SingularName="pc."/>
+        <Unit Id="2" PluralName="oz." SingularName="oz."/>
+        <Unit Id="3" PluralName="drops" SingularName="drop"/>
+        <Unit Id="4" PluralName="dashes" SingularName="dash"/>
+        <Unit Id="5" PluralName="tsp." SingularName="tsp."/>
+    </Units>
+</Cookbook>
