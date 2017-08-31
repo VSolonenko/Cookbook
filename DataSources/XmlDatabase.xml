@@ -14,6 +14,12 @@
         <Ingredient Id="11" Name="Cognac"/>
         <Ingredient Id="12" Name="George Dickel Rye Whiskey"/>
         <Ingredient Id="13" Name="Scotch Whiskey"/>
+        <Ingredient Id="14" Name="The Glenrothes Select Reserve Single Malt Scotch Whisky"/>
+        <Ingredient Id="15" Name="Cherry Heering"/>
+        <Ingredient Id="16" Name="Orange Juice"/>
+        <Ingredient Id="17" Name="Plymouth Gin"/>
+        <Ingredient Id="18" Name="Lemon Juice"/>
+        <Ingredient Id="19" Name="Egg White"/>
     </Ingredients>
     <Recipes>
         <Recipe Id="1" Name="Mojito">
@@ -46,6 +52,23 @@
                 <Component Id="14" Quantity="2.0" IngredientId="13" UnitId="2"/>
                 <Component Id="15" Quantity="0.75" IngredientId="7" UnitId="2"/>
                 <Component Id="16" Quantity="3.0" IngredientId="8" UnitId="4"/>
+            </Components>
+        </Recipe>
+        <Recipe Id="5" Name="Blood &amp; Sand">
+            <Components>
+                <Component Id="17" Quantity="0.75" IngredientId="14" UnitId="2"/>
+                <Component Id="18" Quantity="0.75" IngredientId="7" UnitId="2"/>
+                <Component Id="19" Quantity="0.75" IngredientId="15" UnitId="2"/>
+                <Component Id="20" Quantity="0.75" IngredientId="16" UnitId="2"/>
+            </Components>
+        </Recipe>
+        <Recipe Id="6" Name="Gin Fizz">
+            <Components>
+                <Component Id="21" Quantity="1.0" IngredientId="5" UnitId="2"/>
+                <Component Id="22" Quantity="2.0" IngredientId="17" UnitId="2"/>
+                <Component Id="23" Quantity="1.0" IngredientId="18" UnitId="2"/>
+                <Component Id="24" Quantity="0.75" IngredientId="2" UnitId="2"/>
+                <Component Id="25" Quantity="1.0" IngredientId="19" UnitId="1"/>
             </Components>
         </Recipe>
     </Recipes>

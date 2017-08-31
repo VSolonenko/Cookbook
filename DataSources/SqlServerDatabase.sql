@@ -93,14 +93,22 @@ INSERT INTO [Ingredients] ([Name]) VALUES
 	(N'Bénédictine'),
 	(N'Cognac'),
 	(N'George Dickel Rye Whiskey'),
-	(N'Scotch Whiskey');
+	(N'Scotch Whiskey'),
+	(N'The Glenrothes Select Reserve Single Malt Scotch Whisky'),
+	(N'Cherry Heering'),
+	(N'Orange Juice'),
+	(N'Plymouth Gin'),
+	(N'Lemon Juice'),
+	(N'Egg White');
 GO
 
 INSERT INTO [Recipes] ([Name]) VALUES
 	(N'Mojito'),
 	(N'Manhattan'),
 	(N'Vieux Carré'),
-	(N'Rob Roy');
+	(N'Rob Roy'),
+	(N'Blood & Sand'),
+	(N'Gin Fizz');
 GO
 
 INSERT INTO [Components] ([Quantity], [IngredientId], [UnitId]) VALUES
@@ -119,7 +127,16 @@ INSERT INTO [Components] ([Quantity], [IngredientId], [UnitId]) VALUES
 	(0.75, 12, 2),
 	(2.0, 13, 2),
 	(0.75, 7, 2),
-	(3.0, 8, 4);
+	(3.0, 8, 4),
+	(0.75, 14, 2),
+	(0.75, 7, 2),
+	(0.75, 15, 2),
+	(0.75, 16, 2),
+	(1.0, 5, 2),
+	(2.0, 17, 2),
+	(1.0, 18, 2),
+	(0.75, 2, 2),
+	(1.0, 19, 1);
 GO
 
 INSERT INTO [RecipesComponents] ([ComponentId], [RecipeId]) VALUES
@@ -138,5 +155,14 @@ INSERT INTO [RecipesComponents] ([ComponentId], [RecipeId]) VALUES
 	(13, 3),
 	(14, 4),
 	(15, 4),
-	(16, 4);
+	(16, 4),
+	(17, 5),
+	(18, 5),
+	(19, 5),
+	(20, 5),
+	(21, 6),
+	(22, 6),
+	(23, 6),
+	(24, 6),
+	(25, 6);
 GO

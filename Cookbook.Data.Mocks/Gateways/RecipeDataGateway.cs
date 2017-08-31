@@ -30,7 +30,13 @@ namespace Cookbook.Data.Mocks.Gateways
             var benedictine = new Ingredient(10, "Bénédictine");
             var cognac = new Ingredient(11, "Cognac");
             var georgeWhiskey = new Ingredient(12, "George Dickel Rye Whiskey");
-            var scotchWhiskey = new Ingredient(13, "Scotch whisky");
+            var scotchWhiskey = new Ingredient(13, "Scotch Whisky");
+            var glenrothes = new Ingredient(14, "The Glenrothes Select Reserve Single Malt Scotch Whisky");
+            var cherryHeering = new Ingredient(15, "Cherry Heering");
+            var orangeJuice = new Ingredient(16, "Orange Juice");
+            var plymouthGin = new Ingredient(17, "Plymouth Gin");
+            var lemonJuice = new Ingredient(18, "Lemon Juice");
+            var eggWhite = new Ingredient(19, "Egg White");
 
             var pieces = new Unit(1, "pc.", "pcs.");
             var ounces = new Unit(2, "oz.", "oz.");
@@ -54,13 +60,24 @@ namespace Cookbook.Data.Mocks.Gateways
             var robRoyScotchWhiskey = new Component(13, scotchWhiskey, 2.0, ounces);
             var robRoySweetVermouth = new Component(14, sweetVermouth, 0.75, ounces);
             var robRoyAngosturaBitters = new Component(15, angosturaBitters, 3.0, dashes);
+            var bloodAndSandGlenrothes = new Component(16, glenrothes, 0.75, ounces);
+            var bloodAndSandSweetVermouth = new Component(17, sweetVermouth, 0.75, ounces);
+            var bloodAndSandCherryHeering = new Component(18, cherryHeering, 0.75, ounces);
+            var bloodAndSandOrangeJuice = new Component(19, orangeJuice, 0.75, ounces);
+            var ginFizzClubSoda = new Component(20, clubSoda, 1.0, ounces);
+            var ginFizzPlymouthGin = new Component(21, plymouthGin, 2.0, ounces);
+            var ginFizzLemonJuice = new Component(22, lemonJuice, 1.0, ounces);
+            var ginFizzSimpleSyrup = new Component(23, simpleSyrup, 0.75, ounces);
+            var ginFizzEggWhite = new Component(24, eggWhite, 1.0, pieces);
 
             var mojito = new Recipe(1, "Mojito", new[] { mojitoMintLeaf, mojitoSimpleSyrup, mojitoFreshLimeJuice, mojitoWhiteRum, mojitoClubSoda });
             var manhattan = new Recipe(2, "Manhattan", new[] { manhattanRyeWhiskey, manhattanSweetVermouth, manhattanAngosturaBitters });
             var vieuxCarre = new Recipe(3, "Vieux Carré", new[] { vieuxCarreDaleBitters, vieuxCarreBenedictine, vieuxCarreSweetVermouth, vieuxCarreCognac, vieuxCarreGeorgeWhiskey });
             var robRoy = new Recipe(4, "Rob Roy", new[] { robRoyScotchWhiskey, robRoySweetVermouth, robRoyAngosturaBitters });
+            var bloodAndSand = new Recipe(5, "Blood & Sand", new[] { bloodAndSandGlenrothes, bloodAndSandSweetVermouth, bloodAndSandCherryHeering, bloodAndSandOrangeJuice });
+            var ginFizz = new Recipe(6, "Gin Fizz", new[] { ginFizzClubSoda, ginFizzPlymouthGin, ginFizzLemonJuice, ginFizzSimpleSyrup, ginFizzEggWhite });
 
-            return new[] { mojito, manhattan, vieuxCarre, robRoy };
+            return new[] { mojito, manhattan, vieuxCarre, robRoy, bloodAndSand, ginFizz };
         }
 
         public void Dispose()
