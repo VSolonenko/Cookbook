@@ -2,13 +2,13 @@
 
 namespace Cookbook.Business.Exceptions
 {
-    public abstract class BusinessException : Exception
+    public class BusinessException : Exception
     {
-        protected BusinessException()
+        public BusinessException()
         {
         }
 
-        protected BusinessException(Exception innerException) :
+        public BusinessException(Exception innerException) :
             base(string.Empty, innerException)
         {
         }

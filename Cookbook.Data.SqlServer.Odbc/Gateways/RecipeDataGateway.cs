@@ -22,10 +22,17 @@ namespace Cookbook.Data.SqlServer.Odbc.Gateways
 
         private OdbcConnection CreateConnection()
         {
-            var connection = new OdbcConnection("Driver={SQL Server};Server=(local);Database=Cookbook;Trusted_Connection=Yes;");
-            connection.Open();
+            try
+            {
+                var connection = new OdbcConnection("Driver={SQL Server};Server=(local);Database=Cookbook;Trusted_Connection=Yes;");
+                connection.Open();
 
-            return connection;
+                return connection;
+            }
+            catch (Exception exception)
+            {
+                throw new GatewayNotOpenedDataException(exception);
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -53,7 +60,14 @@ namespace Cookbook.Data.SqlServer.Odbc.Gateways
 
         public IEnumerable<Recipe> GetRecipes()
         {
-            return recipeDataProvider.FindAllRecipes(connection.Value);
+            try
+            {
+                return recipeDataProvider.FindAllRecipes(connection.Value);
+            }
+            catch (Exception exception)
+            {
+                throw new DataException(exception);
+            }
         }
     }
 }

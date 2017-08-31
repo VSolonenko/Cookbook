@@ -2,13 +2,13 @@
 
 namespace Cookbook.Data.Exceptions
 {
-    public abstract class DataException : Exception
+    public class DataException : Exception
     {
-        protected DataException()
+        public DataException()
         {
         }
 
-        protected DataException(Exception innerException) :
+        public DataException(Exception innerException) :
             base(string.Empty, innerException)
         {
         }

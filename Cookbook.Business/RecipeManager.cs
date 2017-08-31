@@ -1,6 +1,7 @@
 ﻿using Cookbook.Business.Exceptions;
 using Cookbook.Business.Models;
 using Cookbook.Data;
+using Cookbook.Data.Exceptions;
 using Cookbook.Data.Gateways;
 using System;
 using System.Collections.Generic;
@@ -25,17 +26,28 @@ namespace Cookbook.Business
                     return dataGateway.FindRecipe(name);
                 }
             }
-            catch (Exception exception)
+            catch (RecipeNotFoundDataException exception)
             {
                 throw new RecipeNotFoundBusinessException(name, exception);
+            }
+            catch (Exception exception)
+            {
+                throw new DataSourceBusinessException(exception);
             }
         }
 
         public IEnumerable<Recipe> GetRecipes()
         {
-            using (IRecipeDataGateway dataGateway = dataService.OpenDataGateway())
+            try
             {
-                return dataGateway.GetRecipes();
+                using (IRecipeDataGateway dataGateway = dataService.OpenDataGateway())
+                {
+                    return dataGateway.GetRecipes();
+                }
+            }
+            catch (Exception exception)
+            {
+                throw new DataSourceBusinessException(exception);
             }
         }
     }
