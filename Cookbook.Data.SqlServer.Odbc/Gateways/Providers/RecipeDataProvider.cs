@@ -1,4 +1,5 @@
 ﻿using Cookbook.Business.Models;
+using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Collections.Generic;
 using System.Data.Odbc;
 using RecipeDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Recipe;
@@ -54,7 +55,10 @@ namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
 
             using (OdbcDataReader reader = command.ExecuteReader())
             {
-                reader.Read();
+                if (!reader.Read())
+                {
+                    throw new RecipeIdNotFoundOdbcDataException(recipeId);
+                }
 
                 recipeDto = new RecipeDto
                 {
@@ -77,7 +81,7 @@ namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
             var commandText = $"SELECT [Id] FROM [Recipes] WHERE [Name] = '{recipeName}';";
             var command = new OdbcCommand(commandText, connection);
 
-            var recipeId = (int)command.ExecuteScalar();
+            var recipeId = (int)(command.ExecuteScalar() ?? throw new RecipeNameNotFoundOdbcDataException(recipeName));
 
             return FindRecipeById(recipeId, connection);
         }

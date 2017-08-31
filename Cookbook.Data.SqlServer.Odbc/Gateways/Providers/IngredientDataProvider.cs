@@ -1,4 +1,5 @@
 ﻿using Cookbook.Business.Models;
+using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Data.Odbc;
 using IngredientDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Ingredient;
 
@@ -15,7 +16,10 @@ namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
 
             using (OdbcDataReader reader = command.ExecuteReader())
             {
-                reader.Read();
+                if (!reader.Read())
+                {
+                    throw new IngredientIdNotFoundOdbcDataException(ingredientId);
+                }
 
                 ingredientDto = new IngredientDto
                 {

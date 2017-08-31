@@ -1,4 +1,5 @@
 ﻿using Cookbook.Business.Models;
+using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Data.Odbc;
 using UnitDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Unit;
 
@@ -15,7 +16,10 @@ namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
 
             using (OdbcDataReader reader = command.ExecuteReader())
             {
-                reader.Read();
+                if (!reader.Read())
+                {
+                    throw new UnitIdNotFoundOdbcDataException(unitId);
+                }
 
                 unitDto = new UnitDto
                 {

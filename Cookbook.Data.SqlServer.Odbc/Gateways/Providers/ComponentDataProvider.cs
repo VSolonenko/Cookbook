@@ -1,4 +1,5 @@
 ﻿using Cookbook.Business.Models;
+using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Collections.Generic;
 using System.Data.Odbc;
 using ComponentDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Component;
@@ -26,7 +27,10 @@ namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
 
             using (OdbcDataReader reader = command.ExecuteReader())
             {
-                reader.Read();
+                if (!reader.Read())
+                {
+                    throw new ComponentIdNotFoundOdbcDataException(componentId);
+                }
 
                 componentDto = new ComponentDto
                 {
