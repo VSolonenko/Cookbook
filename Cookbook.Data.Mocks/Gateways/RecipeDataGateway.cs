@@ -93,7 +93,7 @@ namespace Cookbook.Data.Mocks.Gateways
 
         public IEnumerable<Recipe> GetRecipes()
         {
-            return recipes.Value.OrderBy(recipe => recipe.Name);
+            return recipes.Value;
         }
     }
 }

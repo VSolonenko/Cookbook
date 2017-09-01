@@ -20,7 +20,7 @@ namespace Cookbook.Data.SqlServer.Odbc.DataProviders
         {
             var recipeDtos = new List<RecipeDto>();
 
-            var commandText = $"SELECT {Recipes.Id} FROM {Recipes.TableName} ORDER BY {Recipes.Name};";
+            var commandText = $"SELECT {Recipes.Id} FROM {Recipes.TableName};";
             var command = new OdbcCommand(commandText, connection);
 
             using (OdbcDataReader reader = command.ExecuteReader())
