@@ -22,9 +22,18 @@ namespace Cookbook.Data.SqlServer.Odbc.Gateways
 
         private OdbcConnection CreateConnection()
         {
+            var connectionStringBuilder = new OdbcConnectionStringBuilder
+            {
+                Driver = "SQL Server"
+            };
+            connectionStringBuilder.Add("Database", "Cookbook");
+            connectionStringBuilder.Add("Server", "(local)");
+            connectionStringBuilder.Add("Trusted_Connection", "Yes");
+
+            var connection = new OdbcConnection(connectionStringBuilder.ConnectionString);
+
             try
             {
-                var connection = new OdbcConnection("Driver={SQL Server};Server=(local);Database=Cookbook;Trusted_Connection=Yes;");
                 connection.Open();
 
                 return connection;
