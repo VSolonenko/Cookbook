@@ -1,7 +1,7 @@
 ﻿using Cookbook.Business.Models;
 using Cookbook.Data.Exceptions;
 using Cookbook.Data.Gateways;
-using Cookbook.Data.SqlServer.Odbc.Gateways.Providers;
+using Cookbook.Data.SqlServer.Odbc.DataProviders;
 using System;
 using System.Collections.Generic;
 using System.Data.Odbc;

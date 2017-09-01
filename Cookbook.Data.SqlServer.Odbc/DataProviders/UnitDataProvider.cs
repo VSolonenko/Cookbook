@@ -3,7 +3,7 @@ using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Data.Odbc;
 using UnitDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Unit;
 
-namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
+namespace Cookbook.Data.SqlServer.Odbc.DataProviders
 {
     internal sealed class UnitDataProvider : IUnitDataProvider
     {

@@ -5,7 +5,7 @@ using System.Data.Odbc;
 using ComponentDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Component;
 using RecipeComponentDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.RecipeComponent;
 
-namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
+namespace Cookbook.Data.SqlServer.Odbc.DataProviders
 {
     internal sealed class ComponentDataProvider : IComponentDataProvider
     {

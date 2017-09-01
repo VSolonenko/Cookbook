@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Data.Odbc;
 using RecipeDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Recipe;
 
-namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
+namespace Cookbook.Data.SqlServer.Odbc.DataProviders
 {
     internal sealed class RecipeDataProvider : IRecipeDataProvider
     {

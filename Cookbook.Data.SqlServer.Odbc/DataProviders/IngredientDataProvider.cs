@@ -3,7 +3,7 @@ using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Data.Odbc;
 using IngredientDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Ingredient;
 
-namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
+namespace Cookbook.Data.SqlServer.Odbc.DataProviders
 {
     internal sealed class IngredientDataProvider : IIngredientDataProvider
     {

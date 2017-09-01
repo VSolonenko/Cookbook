@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Odbc;
 
-namespace Cookbook.Data.SqlServer.Odbc.Gateways.Providers
+namespace Cookbook.Data.SqlServer.Odbc.DataProviders
 {
     internal interface IRecipeDataProvider
     {
