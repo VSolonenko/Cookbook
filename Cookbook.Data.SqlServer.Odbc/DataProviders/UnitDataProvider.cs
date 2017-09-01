@@ -1,4 +1,5 @@
 ﻿using Cookbook.Business.Models;
+using Cookbook.Data.SqlServer.Odbc.DataProviders.Tables;
 using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Data.Odbc;
 using UnitDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Unit;
@@ -11,7 +12,7 @@ namespace Cookbook.Data.SqlServer.Odbc.DataProviders
         {
             UnitDto unitDto;
 
-            var commandText = $"SELECT [PluralName], [SingularName] FROM [Units] WHERE [Id] = '{unitId}';";
+            var commandText = $"SELECT {Units.PluralName}, {Units.SingularName} FROM {Units.TableName} WHERE {Units.Id} = '{unitId}';";
             var command = new OdbcCommand(commandText, connection);
 
             using (OdbcDataReader reader = command.ExecuteReader())

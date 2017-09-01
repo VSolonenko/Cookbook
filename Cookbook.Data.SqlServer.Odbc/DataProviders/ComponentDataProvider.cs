@@ -1,4 +1,5 @@
 ﻿using Cookbook.Business.Models;
+using Cookbook.Data.SqlServer.Odbc.DataProviders.Tables;
 using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Collections.Generic;
 using System.Data.Odbc;
@@ -22,7 +23,7 @@ namespace Cookbook.Data.SqlServer.Odbc.DataProviders
         {
             ComponentDto componentDto;
 
-            var commandText = $"SELECT [Quantity], [IngredientId], [UnitId] FROM [Components] WHERE [Id] = {componentId};";
+            var commandText = $"SELECT {Components.Quantity}, {Components.IngredientId}, {Components.UnitId} FROM {Components.TableName} WHERE {Components.Id} = {componentId};";
             var command = new OdbcCommand(commandText, connection);
 
             using (OdbcDataReader reader = command.ExecuteReader())
@@ -56,7 +57,7 @@ namespace Cookbook.Data.SqlServer.Odbc.DataProviders
         {
             var recipeComponentDtos = new List<RecipeComponentDto>();
 
-            var commandText = $"SELECT [ComponentId] FROM [RecipesComponents] WHERE [RecipeId] = {recipeId};";
+            var commandText = $"SELECT {RecipesComponents.ComponentId} FROM {RecipesComponents.TableName} WHERE {RecipesComponents.RecipeId} = {recipeId};";
             var command = new OdbcCommand(commandText, connection);
 
             using (OdbcDataReader reader = command.ExecuteReader())

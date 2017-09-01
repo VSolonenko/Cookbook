@@ -1,4 +1,5 @@
 ﻿using Cookbook.Business.Models;
+using Cookbook.Data.SqlServer.Odbc.DataProviders.Tables;
 using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Collections.Generic;
 using System.Data.Odbc;
@@ -19,7 +20,7 @@ namespace Cookbook.Data.SqlServer.Odbc.DataProviders
         {
             var recipeDtos = new List<RecipeDto>();
 
-            var commandText = "SELECT [Id] FROM [Recipes] ORDER BY [Name];";
+            var commandText = $"SELECT {Recipes.Id} FROM {Recipes.TableName} ORDER BY {Recipes.Name};";
             var command = new OdbcCommand(commandText, connection);
 
             using (OdbcDataReader reader = command.ExecuteReader())
@@ -50,7 +51,7 @@ namespace Cookbook.Data.SqlServer.Odbc.DataProviders
         {
             RecipeDto recipeDto;
 
-            var commandText = $"SELECT [Name] FROM [Recipes] WHERE [Id] = {recipeId};";
+            var commandText = $"SELECT {Recipes.Name} FROM {Recipes.TableName} WHERE {Recipes.Id} = {recipeId};";
             var command = new OdbcCommand(commandText, connection);
 
             using (OdbcDataReader reader = command.ExecuteReader())
@@ -78,7 +79,7 @@ namespace Cookbook.Data.SqlServer.Odbc.DataProviders
 
         public Recipe FindRecipeByName(string recipeName, OdbcConnection connection)
         {
-            var commandText = $"SELECT [Id] FROM [Recipes] WHERE [Name] = '{recipeName}';";
+            var commandText = $"SELECT {Recipes.Id} FROM {Recipes.TableName} WHERE {Recipes.Name} = '{recipeName}';";
             var command = new OdbcCommand(commandText, connection);
 
             var recipeId = (int)(command.ExecuteScalar() ?? throw new RecipeNameNotFoundOdbcDataException(recipeName));

@@ -1,4 +1,5 @@
 ﻿using Cookbook.Business.Models;
+using Cookbook.Data.SqlServer.Odbc.DataProviders.Tables;
 using Cookbook.Data.SqlServer.Odbc.Exceptions;
 using System.Data.Odbc;
 using IngredientDto = Cookbook.Data.SqlServer.Odbc.TransferObjects.Ingredient;
@@ -11,7 +12,7 @@ namespace Cookbook.Data.SqlServer.Odbc.DataProviders
         {
             IngredientDto ingredientDto;
 
-            var commandText = $"SELECT [Name] FROM [Ingredients] WHERE [Id] = '{ingredientId}';";
+            var commandText = $"SELECT {Ingredients.Name} FROM {Ingredients.TableName} WHERE {Ingredients.Id} = '{ingredientId}';";
             var command = new OdbcCommand(commandText, connection);
 
             using (OdbcDataReader reader = command.ExecuteReader())
