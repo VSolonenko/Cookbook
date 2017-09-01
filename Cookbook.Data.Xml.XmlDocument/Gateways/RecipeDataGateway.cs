@@ -1,7 +1,7 @@
 ﻿using Cookbook.Business.Models;
 using Cookbook.Data.Exceptions;
 using Cookbook.Data.Gateways;
-using Cookbook.Data.Xml.XmlDocument.Gateways.Providers;
+using Cookbook.Data.Xml.XmlDocument.DataProviders;
 using System;
 using System.Collections.Generic;
 

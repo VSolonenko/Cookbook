@@ -1,7 +1,7 @@
 ﻿using Cookbook.Business.Models;
 using ComponentDto = Cookbook.Data.Xml.XmlDocument.TransferObjects.Component;
 
-namespace Cookbook.Data.Xml.XmlDocument.Gateways.Providers
+namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 {
     using System.Xml;
 

@@ -3,7 +3,7 @@ using Cookbook.Data.Xml.XmlDocument.Exceptions;
 using System.Collections.Generic;
 using RecipeDto = Cookbook.Data.Xml.XmlDocument.TransferObjects.Recipe;
 
-namespace Cookbook.Data.Xml.XmlDocument.Gateways.Providers
+namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 {
     using System.Xml;
 

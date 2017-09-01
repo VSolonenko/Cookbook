@@ -1,7 +1,7 @@
 ﻿using Cookbook.Business.Models;
 using System.Collections.Generic;
 
-namespace Cookbook.Data.Xml.XmlDocument.Gateways.Providers
+namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 {
     using System.Xml;
 

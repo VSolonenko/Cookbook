@@ -1,6 +1,6 @@
 ﻿using Cookbook.Business.Models;
 
-namespace Cookbook.Data.Xml.XmlDocument.Gateways.Providers
+namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 {
     using System.Xml;
 

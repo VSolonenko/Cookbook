@@ -2,7 +2,7 @@
 using Cookbook.Data.Xml.XmlDocument.Exceptions;
 using IngredientDto = Cookbook.Data.Xml.XmlDocument.TransferObjects.Ingredient;
 
-namespace Cookbook.Data.Xml.XmlDocument.Gateways.Providers
+namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 {
     using System.Xml;
 

@@ -1,5 +1,5 @@
-﻿using Cookbook.Data.Xml.XmlDocument.Gateways;
-using Cookbook.Data.Xml.XmlDocument.Gateways.Providers;
+﻿using Cookbook.Data.Xml.XmlDocument.DataProviders;
+using Cookbook.Data.Xml.XmlDocument.Gateways;
 using Ninject.Modules;
 
 namespace Cookbook.Data.Xml.XmlDocument
