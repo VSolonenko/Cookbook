@@ -1,6 +1,7 @@
 ﻿using Cookbook.Business.Models;
 using Cookbook.Data.Xml.XmlDocument.Exceptions;
 using UnitDto = Cookbook.Data.Xml.XmlDocument.TransferObjects.Unit;
+using UnitElement = Cookbook.Data.Xml.XmlDocument.DataProviders.Elements.Unit;
 
 namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 {
@@ -8,24 +9,19 @@ namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 
     internal sealed class UnitDataProvider : IUnitDataProvider
     {
-        private const string AttributeId = "Id";
-        private const string AttributePluralName = "PluralName";
-        private const string AttributeSingularName = "SingularName";
-        private const string UnitTag = "Unit";
-
         public Unit FindUnitById(int unitId, XmlDocument document)
         {
-            foreach (XmlNode unitNode in document.GetElementsByTagName(UnitTag))
+            foreach (XmlNode unitNode in document.GetElementsByTagName(UnitElement.TagName))
             {
                 var unitDto = new UnitDto
                 {
-                    Id = int.Parse(unitNode.Attributes[AttributeId].Value)
+                    Id = int.Parse(unitNode.Attributes[UnitElement.Id].Value)
                 };
 
                 if (unitDto.Id.Equals(unitId))
                 {
-                    unitDto.PluralName = unitNode.Attributes[AttributePluralName].Value;
-                    unitDto.SingularName = unitNode.Attributes[AttributeSingularName].Value;
+                    unitDto.PluralName = unitNode.Attributes[UnitElement.PluralName].Value;
+                    unitDto.SingularName = unitNode.Attributes[UnitElement.SingularName].Value;
 
                     return new Unit(
                         id: unitDto.Id,

@@ -37,6 +37,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProviders\Elements\Component.cs" />
+    <Compile Include="DataProviders\Elements\Ingredient.cs" />
+    <Compile Include="DataProviders\Elements\Recipe.cs" />
+    <Compile Include="DataProviders\Elements\Unit.cs" />
     <Compile Include="Exceptions\IngredientIdNotFoundXmlDataException.cs" />
     <Compile Include="Exceptions\RecipeNameNotFoundXmlDataException.cs" />
     <Compile Include="Exceptions\UnitIdNotFoundXmlDataException.cs" />

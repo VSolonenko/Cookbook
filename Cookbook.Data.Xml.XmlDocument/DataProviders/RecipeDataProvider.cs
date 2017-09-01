@@ -2,6 +2,7 @@
 using Cookbook.Data.Xml.XmlDocument.Exceptions;
 using System.Collections.Generic;
 using RecipeDto = Cookbook.Data.Xml.XmlDocument.TransferObjects.Recipe;
+using RecipeElement = Cookbook.Data.Xml.XmlDocument.DataProviders.Elements.Recipe;
 
 namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 {
@@ -9,10 +10,6 @@ namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 
     internal sealed class RecipeDataProvider : IRecipeDataProvider
     {
-        private const string AttributeId = "Id";
-        private const string AttributeName = "Name";
-        private const string RecipeTag = "Recipe";
-
         private readonly IComponentDataProvider componentDataProvider;
 
         public RecipeDataProvider(IComponentDataProvider componentDataProvider)
@@ -24,7 +21,7 @@ namespace Cookbook.Data.Xml.XmlDocument.DataProviders
         {
             var recipes = new List<Recipe>();
 
-            foreach (XmlNode recipeNode in document.GetElementsByTagName(RecipeTag))
+            foreach (XmlNode recipeNode in document.GetElementsByTagName(RecipeElement.TagName))
             {
                 Recipe recipe = ReadRecipeFromNode(recipeNode, document);
                 recipes.Add(recipe);
@@ -35,9 +32,9 @@ namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 
         public Recipe FindRecipeByName(string recipeName, XmlDocument document)
         {
-            foreach (XmlNode recipeNode in document.GetElementsByTagName(RecipeTag))
+            foreach (XmlNode recipeNode in document.GetElementsByTagName(RecipeElement.TagName))
             {
-                if (recipeNode.Attributes[AttributeName].Value.Equals(recipeName))
+                if (recipeNode.Attributes[RecipeElement.Name].Value.Equals(recipeName))
                 {
                     return ReadRecipeFromNode(recipeNode, document);
                 }
@@ -50,8 +47,8 @@ namespace Cookbook.Data.Xml.XmlDocument.DataProviders
         {
             var recipeDto = new RecipeDto
             {
-                Id = int.Parse(recipeNode.Attributes[AttributeId].Value),
-                Name = recipeNode.Attributes[AttributeName].Value
+                Id = int.Parse(recipeNode.Attributes[RecipeElement.Id].Value),
+                Name = recipeNode.Attributes[RecipeElement.Name].Value
             };
 
             var components = new List<Component>();

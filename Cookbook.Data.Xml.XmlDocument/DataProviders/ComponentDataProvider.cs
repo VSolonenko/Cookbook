@@ -1,5 +1,6 @@
 ﻿using Cookbook.Business.Models;
 using ComponentDto = Cookbook.Data.Xml.XmlDocument.TransferObjects.Component;
+using ComponentElement = Cookbook.Data.Xml.XmlDocument.DataProviders.Elements.Component;
 
 namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 {
@@ -7,11 +8,6 @@ namespace Cookbook.Data.Xml.XmlDocument.DataProviders
 
     internal sealed class ComponentDataProvider : IComponentDataProvider
     {
-        private const string AttributeId = "Id";
-        private const string AttributeIngredientId = "IngredientId";
-        private const string AttributeQuantity = "Quantity";
-        private const string AttributeUnitId = "UnitId";
-
         private readonly IIngredientDataProvider ingredientDataProvider;
         private readonly IUnitDataProvider unitDataProvider;
 
@@ -25,10 +21,10 @@ namespace Cookbook.Data.Xml.XmlDocument.DataProviders
         {
             var componentDto = new ComponentDto
             {
-                Id = int.Parse(componentNode.Attributes[AttributeId].Value),
-                IngredientId = int.Parse(componentNode.Attributes[AttributeIngredientId].Value),
-                Quantity = double.Parse(componentNode.Attributes[AttributeQuantity].Value),
-                UnitId = int.Parse(componentNode.Attributes[AttributeUnitId].Value)
+                Id = int.Parse(componentNode.Attributes[ComponentElement.Id].Value),
+                IngredientId = int.Parse(componentNode.Attributes[ComponentElement.IngredientId].Value),
+                Quantity = double.Parse(componentNode.Attributes[ComponentElement.Quantity].Value),
+                UnitId = int.Parse(componentNode.Attributes[ComponentElement.UnitId].Value)
             };
 
             Ingredient ingredient = ingredientDataProvider.FindIngredientById(componentDto.IngredientId, document);
